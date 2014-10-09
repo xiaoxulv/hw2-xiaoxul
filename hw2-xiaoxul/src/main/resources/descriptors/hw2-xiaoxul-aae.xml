@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<analysisEngineDescription xmlns="http://uima.apache.org/resourceSpecifier">
+  <frameworkImplementation>org.apache.uima.java</frameworkImplementation>
+  <primitive>false</primitive>  
+  <delegateAnalysisEngineSpecifiers>
+    <delegateAnalysisEngine key="geneannotator">
+      <import location="geneannotator.xml"/>
+    </delegateAnalysisEngine>
+    <delegateAnalysisEngine key="sentenceannotator">
+      <import location="sentenceannotator.xml"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="geneannotator_abner">
+      <import location="geneannotator_abner.xml"/>
+    </delegateAnalysisEngine>
+  <delegateAnalysisEngine key="annatotatorDecider">
+      <import location="annatotatorDecider.xml"/>
+    </delegateAnalysisEngine>
+  </delegateAnalysisEngineSpecifiers>
+  <analysisEngineMetaData>
+    <name>aeDescriptor</name>
+    <description/>
+    <version>1.0</version>
+    <vendor/>
+    <configurationParameters searchStrategy="language_fallback"/>
+    <configurationParameterSettings/>
+    <flowConstraints>
+      <fixedFlow>
+        <node>sentenceannotator</node>
+        <node>geneannotator</node>
+      <node>geneannotator_abner</node>
+      <node>annatotatorDecider</node>
+      </fixedFlow>
+    </flowConstraints>
+    <fsIndexCollection/>
+    <capabilities>
+      <capability>
+        <inputs/>
+        <outputs/>
+        <languagesSupported/>
+      </capability>
+    </capabilities>
+  <operationalProperties>
+      <modifiesCas>true</modifiesCas>
+      <multipleDeploymentAllowed>true</multipleDeploymentAllowed>
+      <outputsNewCASes>false</outputsNewCASes>
+    </operationalProperties>
+  </analysisEngineMetaData>
+  <resourceManagerConfiguration/>
+</analysisEngineDescription>
