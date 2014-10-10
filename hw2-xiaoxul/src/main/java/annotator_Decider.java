@@ -11,7 +11,8 @@ import org.apache.uima.jcas.JCas;
 
 public class annotator_Decider extends JCasAnnotator_ImplBase {
 	/**
-	 * This annotator is the last one. All the genetags got both lingpipe and abner will go through this one 
+	 * This annotator is the last one, which process the result from previous annotators using NER. 
+	 * All the genetags got both lingpipe and abner will go through this one 
 	 * to make a decision about whether it will be showed in the last result, which means stored in the output
 	 * file.
 	 * The decider process is quite simple and straight forward: genetags from lingpipe with greater confidence 
