@@ -38,13 +38,16 @@ public class geneannotator extends JCasAnnotator_ImplBase {
     JCas jcas = aCas;
     //int count = 0;
     
-    File modelFile = new File("src/main/resources/inputData/ne-en-bio-genetag.HmmChunker");
-    System.out.println("Reading chunker from file =" + modelFile);
+    // File modelFile = new File("src/main/resources/inputData/ne-en-bio-genetag.HmmChunker");
+    //System.out.println("Reading chunker from file =" + modelFile);   
+    String  pathofgene="src/main/resources/inputData/ne-en-bio-genetag.HmmChunker"; 
     FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();
 
     ConfidenceChunker chunker = null;
 	try {
-		chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
+		//chunker = (ConfidenceChunker) AbstractExternalizable.readObject(modelFile);
+		chunker = (ConfidenceChunker) AbstractExternalizable.readResourceObject(pathofgene);
+
 	} catch (IOException e) {
 		// TODO Auto-generated catch block
 		e.printStackTrace();
