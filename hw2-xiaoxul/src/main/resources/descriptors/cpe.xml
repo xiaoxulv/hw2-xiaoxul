@@ -9,7 +9,7 @@
                 <nameValuePair>
                     <name>inputFile</name>
                     <value>
-                        <string>/Users/apple/Documents/workspace/hw2-xiaoxul/src/main/resources/inputData/hw1.in</string>
+                        <string>src/main/resources/inputData/hw1.in</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>
@@ -43,7 +43,7 @@
                 <nameValuePair>
                     <name>outputfile</name>
                     <value>
-                        <string>src/main/resources/output.out</string>
+                        <string>src/main/resources/hw2-xiaoxul.out</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>
