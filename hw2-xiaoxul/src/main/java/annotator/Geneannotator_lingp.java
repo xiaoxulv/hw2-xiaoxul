@@ -89,7 +89,7 @@ public class Geneannotator_lingp extends JCasAnnotator_ImplBase {
             double conf = Math.pow(2.0, c.score());
             //System.out.println(ft.format(conf));
             
-            if(conf > 0.01){//only leave those whose confidence make sense
+            if(conf > 0.1){//only leave those whose confidence make sense
             
             	gene = (sen.substring(c.start(), c.end()));
             	//System.out.println(c.start());
@@ -121,56 +121,9 @@ public class Geneannotator_lingp extends JCasAnnotator_ImplBase {
             }
         //System.out.println(count++);
         it.next();
-       }
-        
+       } 
     }
-    
-    
-    
-//    //not use Pos... ANYMORE!
-//    String SentenceIdentifier = "";
-//    String SentenceText = "";
-//    System.out.println("Processing GENE");
-//    PosTagNamedEntityRecognizer Tagger = null;
-//    try {
-//      Tagger = new PosTagNamedEntityRecognizer();
-//    } catch (ResourceInitializationException e) {
-//    // TODO Auto-generated catch block
-//      e.printStackTrace();
-//    }
-//    
-//    
-//    FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
-//    while (it.hasNext()) {
-//
-//      Sentence annotation = (Sentence) it.next();
-//      SentenceIdentifier = annotation.getID();
-//      SentenceText = annotation.getContent();
-//      
-//      Map<Integer, Integer> occurences = Tagger.getGeneSpans(SentenceText);
-//      int begin;
-//      int end;
-//      String gene;
-//      for (Map.Entry<Integer, Integer> entry : occurences.entrySet())
-//      {
-//          begin = entry.getKey();
-//          end = entry.getValue();
-//          gene = SentenceText.substring(begin, end);
-//          begin = begin - countWhiteSpaces(SentenceText.substring(0,begin)) ;
-//          end = begin + gene.length() - countWhiteSpaces(gene) - 1;
-//          
-//          if(genes.findGene(gene) == true ){
-//            Genetag anno = new Genetag(jcas);
-//            anno.setBegin(begin);
-//            anno.setEnd(end);
-//            anno.setID(SentenceIdentifier);
-//            anno.setContent(gene);
-//            anno.addToIndexes();
-//          }
-//      }
-//     
-      
-    }
+ }
     
     
   private int countBlank(String s){

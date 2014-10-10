@@ -22,7 +22,7 @@ public class Geneannotator_abner extends JCasAnnotator_ImplBase {
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
 		FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
-		Tagger t = new Tagger();
+		Tagger t = new Tagger(1);//use BioCreative
 		int begin;
 		int end;
 		int count = 0;
@@ -33,7 +33,7 @@ public class Geneannotator_abner extends JCasAnnotator_ImplBase {
 			count++;
 			//System.out.println("the count" + count);
 	        //System.out.println(t.tokenize(sen));   
-	        t.tokenize(sen);
+//	        t.tokenize(sen);
 //	        t.tagABNER(sen);
 //	        t.tagIOB(sen);
 //	        t.tagSGML(sen);

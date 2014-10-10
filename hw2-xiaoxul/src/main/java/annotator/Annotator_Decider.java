@@ -13,6 +13,8 @@ import MyTypeSystem.Gene;
 import MyTypeSystem.Genetag;
 
 
+
+
 public class Annotator_Decider extends JCasAnnotator_ImplBase {
 	/**
 	 * This annotator is the last one, which process the result from previous annotators using NER. 
@@ -66,7 +68,7 @@ public class Annotator_Decider extends JCasAnnotator_ImplBase {
 		//will cause an exception
 		//try to ues new type system to store in cas
 		
-		double div = 0.1; 
+		double div = 0.3; 
 		Iterator lingpIt = lingps.entrySet().iterator();
 		while(lingpIt.hasNext()){
 			Map.Entry entry = (Map.Entry) lingpIt.next();
@@ -84,19 +86,30 @@ public class Annotator_Decider extends JCasAnnotator_ImplBase {
 				}
 				if(val < div){
 					if(abners.contains(Key)){
-						Gene g = new Gene(jcas);
-						g.setID(Key.substring(0, 14));
+						Gene gg = new Gene(jcas);
+						gg.setID(Key.substring(0, 14));
 						//System.out.println(Key.substring(0, 14));
-						g.setBegin(Integer.parseInt(Key.substring(15, 18)));
+						gg.setBegin(Integer.parseInt(Key.substring(15, 18)));
 						//System.out.println(Key.substring(15, 17));
-						g.setEnd(Integer.parseInt(Key.substring(19, 22)));
-						g.setContent(Key.substring(23));
-						g.addToIndexes();
-					}
+						gg.setEnd(Integer.parseInt(Key.substring(19, 22)));
+						gg.setContent(Key.substring(23));
+						gg.addToIndexes();
+				    }
 				}
 			}
 		}
+		Iterator abnerit = abners.iterator();
+		while(abnerit.hasNext()){
+			String KEY = (String) abnerit.next();
+			if(KEY.charAt(14) == ' '){
+				Gene gg = new Gene(jcas);
+				gg.setID(KEY.substring(0, 14));
+				gg.setBegin(Integer.parseInt(KEY.substring(15, 18)));
+				gg.setEnd(Integer.parseInt(KEY.substring(19, 22)));
+				gg.setContent(KEY.substring(23));
+				gg.addToIndexes();
+			}
 
+		}
 	}
-
 }
