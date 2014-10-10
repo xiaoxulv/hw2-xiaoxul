@@ -15,7 +15,7 @@ import org.apache.uima.util.FileUtils;
 import org.apache.uima.util.Progress;
 
 
-public class reader extends CollectionReader_ImplBase {
+public class Reader extends CollectionReader_ImplBase {
 	/**
 	 * Open the input file and put texts in it to the cas. 
 	 */
@@ -64,7 +64,6 @@ public class reader extends CollectionReader_ImplBase {
 	
 	/**
 	 * getNext(CAS aCAS) put what Initialize get from the file to CAS.
-	 * @param CAS
 	 * 
 	 */
 	@Override

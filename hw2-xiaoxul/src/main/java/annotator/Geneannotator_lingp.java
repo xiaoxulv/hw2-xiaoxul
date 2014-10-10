@@ -1,3 +1,4 @@
+package annotator;
 import java.io.File;
 import java.io.IOException;
 import java.text.DecimalFormat;
@@ -15,6 +16,9 @@ import org.apache.uima.cas.FSIterator;
 import org.apache.uima.resource.ResourceInitializationException;
 import org.apache.uima.resource.ResourceProcessException;
 
+import MyTypeSystem.Genetag;
+import MyTypeSystem.Sentence;
+
 import com.aliasi.chunk.Chunk;
 import com.aliasi.chunk.Chunker;
 import com.aliasi.chunk.Chunking;
@@ -23,10 +27,10 @@ import com.aliasi.util.AbstractExternalizable;
 //import com.aliasi.util.Strings;
 
 
-public class geneannotator extends JCasAnnotator_ImplBase {
+public class Geneannotator_lingp extends JCasAnnotator_ImplBase {
 	
 	/**
-	 * Annotator for genetag, using lingpipe, processing sentence.
+	 * Annotator for Genetag, using lingpipe, processing Sentence.
 	 *
 	 */
 
@@ -37,18 +41,18 @@ public class geneannotator extends JCasAnnotator_ImplBase {
 
   public void process(JCas aCas) throws AnalysisEngineProcessException {
 	  /**
-		 * The process function uses lingpipe as a gene name source,manipulate the split sentences 
+		 * The process function uses lingpipe as a gene name source,manipulate the split Sentences 
 		 * from the cas, retrive the gene name and store them.
 		 */
     // TODO Auto-generated method stub
     JCas jcas = aCas;
     //int count = 0;
     
-    // File modelFile = new File("src/main/resources/inputData/ne-en-bio-genetag.HmmChunker");
+    // File modelFile = new File("src/main/resources/inputData/ne-en-bio-Genetag.HmmChunker");
     //System.out.println("Reading chunker from file =" + modelFile);   
-   // String pathofgene ="/Users/apple/git/hw2-xiaoxul/hw2-xiaoxul/src/main/resources/inputData/ne-en-bio-genetag.HmmChunker";
-    String pathofgene ="/inputData/ne-en-bio-genetag.HmmChunker";
-    FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();
+   // String pathofgene ="/Users/apple/git/hw2-xiaoxul/hw2-xiaoxul/src/main/resources/inputData/ne-en-bio-Genetag.HmmChunker";
+    String pathofgene ="/inputData/ne-en-bio-Genetag.HmmChunker";
+    FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
 
     ConfidenceChunker chunker = null;
 	try {
@@ -67,7 +71,7 @@ public class geneannotator extends JCasAnnotator_ImplBase {
 	//System.out.println("Rank          Conf      Span    Type     Gene");
     while(it.hasNext()){
     	//System.out.println("iterator");
-        sentence ann = (sentence)it.get();  
+        Sentence ann = (Sentence)it.get();  
         String sen = ann.getContent();
         String id = ann.getID();
         char[] senten = sen.toCharArray();
@@ -105,7 +109,7 @@ public class geneannotator extends JCasAnnotator_ImplBase {
             	begin = begin - countBlank(sen.substring(0,begin)) ;
             	end = begin + gene.length() - countBlank(gene) - 1;
 
-            	genetag gt = new genetag(aCas);
+            	Genetag gt = new Genetag(aCas);
             	gt.setID(id);
             	gt.setContent(gene);
             	gt.setConfidence(conf);
@@ -124,8 +128,8 @@ public class geneannotator extends JCasAnnotator_ImplBase {
     
     
 //    //not use Pos... ANYMORE!
-//    String sentenceIdentifier = "";
-//    String sentenceText = "";
+//    String SentenceIdentifier = "";
+//    String SentenceText = "";
 //    System.out.println("Processing GENE");
 //    PosTagNamedEntityRecognizer Tagger = null;
 //    try {
@@ -136,14 +140,14 @@ public class geneannotator extends JCasAnnotator_ImplBase {
 //    }
 //    
 //    
-//    FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();
+//    FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
 //    while (it.hasNext()) {
 //
-//      sentence annotation = (sentence) it.next();
-//      sentenceIdentifier = annotation.getID();
-//      sentenceText = annotation.getContent();
+//      Sentence annotation = (Sentence) it.next();
+//      SentenceIdentifier = annotation.getID();
+//      SentenceText = annotation.getContent();
 //      
-//      Map<Integer, Integer> occurences = Tagger.getGeneSpans(sentenceText);
+//      Map<Integer, Integer> occurences = Tagger.getGeneSpans(SentenceText);
 //      int begin;
 //      int end;
 //      String gene;
@@ -151,15 +155,15 @@ public class geneannotator extends JCasAnnotator_ImplBase {
 //      {
 //          begin = entry.getKey();
 //          end = entry.getValue();
-//          gene = sentenceText.substring(begin, end);
-//          begin = begin - countWhiteSpaces(sentenceText.substring(0,begin)) ;
+//          gene = SentenceText.substring(begin, end);
+//          begin = begin - countWhiteSpaces(SentenceText.substring(0,begin)) ;
 //          end = begin + gene.length() - countWhiteSpaces(gene) - 1;
 //          
 //          if(genes.findGene(gene) == true ){
 //            Genetag anno = new Genetag(jcas);
 //            anno.setBegin(begin);
 //            anno.setEnd(end);
-//            anno.setID(sentenceIdentifier);
+//            anno.setID(SentenceIdentifier);
 //            anno.setContent(gene);
 //            anno.addToIndexes();
 //          }

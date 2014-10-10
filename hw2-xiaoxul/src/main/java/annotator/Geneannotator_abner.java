@@ -1,30 +1,33 @@
+package annotator;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 
+import MyTypeSystem.Genetag;
+import MyTypeSystem.Sentence;
 import abner.Tagger;
 
 
-public class geneannotator_abner extends JCasAnnotator_ImplBase {
+public class Geneannotator_abner extends JCasAnnotator_ImplBase {
 	/**
-	 * Annotator for genetag, using abber, processing sentence.
+	 * Annotator for Genetag, using abber, processing Sentence.
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		/**
-		 * The process function uses abner as a gene name source,manipulate the split sentences 
+		 * The process function uses abner as a gene name source,manipulate the split Sentences 
 		 * from the cas, retrive the gene name and store them.
 		 */
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
-		FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();
+		FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
 		Tagger t = new Tagger();
 		int begin;
 		int end;
 		int count = 0;
 		while(it.hasNext()){
-	        sentence ann = (sentence)it.get();  
+	        Sentence ann = (Sentence)it.get();  
 	        String sen = ann.getContent();
 	        String id = ann.getID();
 			count++;
@@ -60,7 +63,7 @@ public class geneannotator_abner extends JCasAnnotator_ImplBase {
 	    	    	//System.out.println(begin);
 	    	    	//System.out.println(end);
 	    	    
-	    	    	genetag gt = new genetag(aCas);
+	    	    	Genetag gt = new Genetag(aCas);
 	    	    	gt.setID(id);
 	    	    	gt.setContent(gene);	    	    	
 	    	    	gt.setBegin(begin);

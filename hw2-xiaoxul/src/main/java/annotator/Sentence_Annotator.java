@@ -1,16 +1,19 @@
+package annotator;
 import org.apache.uima.analysis_component.JCasAnnotator_ImplBase;
 import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.jcas.JCas;
 
+import MyTypeSystem.Sentence;
 
-public class sentenceAnnotator extends JCasAnnotator_ImplBase {
+
+public class Sentence_Annotator extends JCasAnnotator_ImplBase {
 	/**
 	 * Sentence annotator, take input file and split them and store them in cas.
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		/**
-		 * Get the input file content into CAS, split them by sentence
+		 * Get the input file content into CAS, split them by Sentence
 		 * Also, get the ID and content separately and then store them separately
 		 */
 		// TODO Auto-generated method stub
@@ -26,12 +29,12 @@ public class sentenceAnnotator extends JCasAnnotator_ImplBase {
 			//making things safer
 			int space = contents[i].indexOf(" ");
 			
-			String sentenceId = contents[i].substring(0, space);
-			String sentenceContent = contents[i].substring(space).trim();
+			String SentenceId = contents[i].substring(0, space);
+			String SentenceContent = contents[i].substring(space).trim();
 			
-			sentence sen = new sentence(jcas);
-			sen.setID(sentenceId);
-			sen.setContent(sentenceContent);
+			Sentence sen = new Sentence(jcas);
+			sen.setID(SentenceId);
+			sen.setContent(SentenceContent);
 			sen.addToIndexes();
 		
 		}	

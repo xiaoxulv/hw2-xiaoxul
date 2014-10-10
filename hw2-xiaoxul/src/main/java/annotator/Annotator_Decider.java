@@ -1,3 +1,4 @@
+package annotator;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -8,11 +9,14 @@ import org.apache.uima.analysis_engine.AnalysisEngineProcessException;
 import org.apache.uima.cas.FSIterator;
 import org.apache.uima.jcas.JCas;
 
+import MyTypeSystem.Gene;
+import MyTypeSystem.Genetag;
 
-public class annotator_Decider extends JCasAnnotator_ImplBase {
+
+public class Annotator_Decider extends JCasAnnotator_ImplBase {
 	/**
 	 * This annotator is the last one, which process the result from previous annotators using NER. 
-	 * All the genetags got both lingpipe and abner will go through this one 
+	 * All the Genetags got both lingpipe and abner will go through this one 
 	 * to make a decision about whether it will be showed in the last result, which means stored in the output
 	 * file.
 	 * 
@@ -20,15 +24,15 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		/**
-		 * The decider's process function is quite simple and straight forward: genetags from lingpipe with greater 
+		 * The decider's process function is quite simple and straight forward: Genetags from lingpipe with greater 
 		 * confidence than 0.1 will be directly given to cas while those who are not will be looked up and evaluated
 		 * in the results got from abner.
 		 * 
 		 */
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
-		FSIterator it = jcas.getAnnotationIndex(genetag.type).iterator();
-		genetag gene;
+		FSIterator it = jcas.getAnnotationIndex(Genetag.type).iterator();
+		Genetag gene;
 		String ID;
 		String Content;
 		int begin, end = -1;
@@ -37,7 +41,7 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 		HashMap<String, Double> lingps = new HashMap<String, Double>();
 		
 		while(it.hasNext()){
-			gene = (genetag)it.get();
+			gene = (Genetag)it.get();
 			String processor = gene.getCasProcessorId();
 			
 			if(processor.equals("abner")){

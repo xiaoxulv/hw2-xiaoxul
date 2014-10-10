@@ -16,8 +16,10 @@ import org.apache.uima.jcas.JCas;
 import org.apache.uima.resource.ResourceProcessException;
 import org.xml.sax.SAXException;
 
+import MyTypeSystem.Gene;
 
-public class consumer extends CasConsumer_ImplBase {
+
+public class Consumer extends CasConsumer_ImplBase {
 	private BufferedWriter buf;
 	public static final String PARAM_OUTPUTDIR = "outputfile";
 	/**
