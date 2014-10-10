@@ -40,7 +40,8 @@ public class geneannotator extends JCasAnnotator_ImplBase {
     
     // File modelFile = new File("src/main/resources/inputData/ne-en-bio-genetag.HmmChunker");
     //System.out.println("Reading chunker from file =" + modelFile);   
-    String  pathofgene="src/main/resources/inputData/ne-en-bio-genetag.HmmChunker"; 
+   // String pathofgene ="/Users/apple/git/hw2-xiaoxul/hw2-xiaoxul/src/main/resources/inputData/ne-en-bio-genetag.HmmChunker";
+    String pathofgene ="/inputData/ne-en-bio-genetag.HmmChunker";
     FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();
 
     ConfidenceChunker chunker = null;
@@ -78,7 +79,7 @@ public class geneannotator extends JCasAnnotator_ImplBase {
             double conf = Math.pow(2.0, c.score());
             //System.out.println(ft.format(conf));
             
-            if(conf > 0.05){//only leave those whose confidence make sense
+            if(conf > 0.01){//only leave those whose confidence make sense
             
             	gene = (sen.substring(c.start(), c.end()));
             	//System.out.println(c.start());

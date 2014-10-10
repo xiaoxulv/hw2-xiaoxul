@@ -46,14 +46,14 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 		
 		//clear the previous jcas
 		//jcas.reset();
-		
+		double div = 0.1; 
 		Iterator lingpIt = lingps.entrySet().iterator();
 		while(lingpIt.hasNext()){
 			Map.Entry entry = (Map.Entry) lingpIt.next();
 			Double val = (Double) entry.getValue();
 			String Key = (String) entry.getKey(); 
 			if(Key.charAt(14) == ' '){
-				if(val >= 0.5){
+				if(val >= div){
 					Gene g = new Gene(jcas);
 					//System.out.println(Key);
 					g.setID(Key.substring(0, 14));
@@ -62,7 +62,7 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
             		g.setContent(Key.substring(23));
             		g.addToIndexes();
 				}
-				if(val < 0.5){
+				if(val < div){
 
 					if(abners.contains(Key)){
 						Gene g = new Gene(jcas);

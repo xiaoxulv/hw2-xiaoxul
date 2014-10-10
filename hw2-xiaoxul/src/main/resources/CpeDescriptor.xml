@@ -3,13 +3,13 @@
     <collectionReader>
         <collectionIterator>
             <descriptor>
-                <import location="collectionReaderDescriptor.xml"/>
+                <import location="descriptors/collectionReaderDescriptor.xml"/>
             </descriptor>
             <configurationParameterSettings>
                 <nameValuePair>
                     <name>inputFile</name>
                     <value>
-                        <string>src/main/resources/inputData/hw1.in</string>
+                        <string>hw2.in</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>
@@ -18,7 +18,7 @@
     <casProcessors casPoolSize="3" processingUnitThreadCount="1">
         <casProcessor deployment="integrated" name="aeDescriptor">
             <descriptor>
-                <import location="hw2-xiaoxul-aae.xml"/>
+                <import location="descriptors/hw2-xiaoxul-aae.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
@@ -30,7 +30,7 @@
         </casProcessor>
         <casProcessor deployment="integrated" name="casConsumerDescriptor">
             <descriptor>
-                <import location="casConsumerDescriptor.xml"/>
+                <import location="descriptors/casConsumerDescriptor.xml"/>
             </descriptor>
             <deploymentParameters/>
             <errorHandling>
@@ -43,7 +43,7 @@
                 <nameValuePair>
                     <name>outputfile</name>
                     <value>
-                        <string>src/main/resources/hw2-xiaoxul.out</string>
+                        <string>hw2-xiaoxul.out</string>
                     </value>
                 </nameValuePair>
             </configurationParameterSettings>

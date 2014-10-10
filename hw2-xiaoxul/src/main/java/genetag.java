@@ -10,8 +10,8 @@ import edu.cmu.deiis.types.Annotation;
 
 
 /** 
- * Updated by JCasGen Wed Oct 08 23:20:54 EDT 2014
- * XML source: /Users/apple/Documents/workspace/hw2-xiaoxul/src/main/resources/descriptors/deiis_types.xml
+ * Updated by JCasGen Thu Oct 09 23:09:49 EDT 2014
+ * XML source: /Users/apple/git/hw2-xiaoxul/hw2-xiaoxul/src/main/resources/descriptors/deiis_types.xml
  * @generated */
 public class genetag extends Annotation {
   /** @generated
