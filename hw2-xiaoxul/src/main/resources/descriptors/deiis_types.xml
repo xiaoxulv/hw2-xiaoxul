@@ -23,7 +23,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>Genetag</name>
+      <name>MyTypeSystem.Sentence</name>
       <description/>
       <supertypeName>edu.cmu.deiis.types.Annotation</supertypeName>
       <features>
@@ -40,7 +40,7 @@
       </features>
     </typeDescription>
     <typeDescription>
-      <name>Sentence</name>
+      <name>MyTypeSystem.Gene</name>
       <description/>
       <supertypeName>edu.cmu.deiis.types.Annotation</supertypeName>
       <features>
@@ -56,8 +56,8 @@
         </featureDescription>
       </features>
     </typeDescription>
-  <typeDescription>
-      <name>Gene</name>
+    <typeDescription>
+      <name>MyTypeSystem.Genetag</name>
       <description/>
       <supertypeName>edu.cmu.deiis.types.Annotation</supertypeName>
       <features>

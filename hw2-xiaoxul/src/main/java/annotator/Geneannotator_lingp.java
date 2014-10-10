@@ -51,7 +51,7 @@ public class Geneannotator_lingp extends JCasAnnotator_ImplBase {
     // File modelFile = new File("src/main/resources/inputData/ne-en-bio-Genetag.HmmChunker");
     //System.out.println("Reading chunker from file =" + modelFile);   
    // String pathofgene ="/Users/apple/git/hw2-xiaoxul/hw2-xiaoxul/src/main/resources/inputData/ne-en-bio-Genetag.HmmChunker";
-    String pathofgene ="/inputData/ne-en-bio-Genetag.HmmChunker";
+    String pathofgene ="/inputData/ne-en-bio-genetag.HmmChunker";
     FSIterator it = jcas.getAnnotationIndex(Sentence.type).iterator();
 
     ConfidenceChunker chunker = null;
