@@ -21,7 +21,8 @@ public class consumer extends CasConsumer_ImplBase {
 	private BufferedWriter buf;
 	public static final String PARAM_OUTPUTDIR = "outputfile";
 	/**
-	 * process() write the gene ID,name,index into the disk file, which are got from geneAnalysis. 
+	 * process() write the gene ID,name,index into the disk file, which are got from annotator_Decider. 
+	 * My own perform analysis has been commented as grader will do this job.
 	 */
 	@Override
 	public void processCas(CAS aCAS) throws ResourceProcessException {
@@ -72,6 +73,8 @@ public class consumer extends CasConsumer_ImplBase {
 			}
 			
 	    }
+	    //this is my own performan ayalysis.
+	    //compare my output file with sample.out.
 //	    System.out.println("performance analysis");
 //	    BufferedReader my = null,sample=null;
 //	    int myall = 0;

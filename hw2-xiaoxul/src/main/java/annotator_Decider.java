@@ -10,7 +10,15 @@ import org.apache.uima.jcas.JCas;
 
 
 public class annotator_Decider extends JCasAnnotator_ImplBase {
-
+	/**
+	 * This annotator is the last one. All the genetags got both lingpipe and abner will go through this one 
+	 * to make a decision about whether it will be showed in the last result, which means stored in the output
+	 * file.
+	 * The decider process is quite simple and straight forward: genetags from lingpipe with greater confidence 
+	 * than 0.1 will be directly given to cas while those who are not will be looked up and evaluated in the results 
+	 * got from abner.
+	 * 
+	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		// TODO Auto-generated method stub
@@ -46,6 +54,10 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 		
 		//clear the previous jcas
 		//jcas.reset();
+		//this is not allowed, reset can't be called from annotator
+		//will cause an exception
+		//try to ues new type system to store in cas
+		
 		double div = 0.1; 
 		Iterator lingpIt = lingps.entrySet().iterator();
 		while(lingpIt.hasNext()){
@@ -63,7 +75,6 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
             		g.addToIndexes();
 				}
 				if(val < div){
-
 					if(abners.contains(Key)){
 						Gene g = new Gene(jcas);
 						g.setID(Key.substring(0, 14));
@@ -76,34 +87,7 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 					}
 				}
 			}
-			//it.next();
 		}
-//		while(lingpIt.hasNext()){
-//			Map.Entry entry = (Map.Entry) lingpIt.next();
-//			Double val = (Double) entry.getValue();
-//			String Key = (String) entry.getKey(); 
-//			if(val >= 0.5){//enough confidence for their existence in final result
-//				genetag gt = new genetag(jcas);
-//            	gt.setID(Key.substring(0, 13));
-//            	gt.setBegin(Integer.parseInt(Key.substring(15, 17)));
-//            	gt.setEnd(Integer.parseInt(Key.substring(19,21)));
-//            	gt.setContent(Key.substring(22));
-//            	gt.addToIndexes();
-//			}
-//			if(val < 0.5){//low confidence, if exist in result from abner, in final result 
-//				String k = (String) entry.getKey();
-//				if(abners.contains(k)){
-//					genetag gt = new genetag(jcas);
-//	            	gt.setID(k.substring(0, 13));
-//	            	gt.setBegin(Integer.parseInt(k.substring(15, 17)));
-//	            	gt.setEnd(Integer.parseInt(k.substring(19,21)));
-//	            	gt.setContent(k.substring(22));
-//	            	gt.addToIndexes();
-//				}
-//			}
-//		
-//			lingpIt.next();
-//		}
 
 	}
 

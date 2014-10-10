@@ -16,7 +16,9 @@ import org.apache.uima.util.Progress;
 
 
 public class reader extends CollectionReader_ImplBase {
-
+	/**
+	 * Open the input file and put texts in it to the cas. 
+	 */
 //	private BufferedReader in;
 //	private String contents = ""; 
 	

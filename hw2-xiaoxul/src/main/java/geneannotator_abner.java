@@ -7,7 +7,10 @@ import abner.Tagger;
 
 
 public class geneannotator_abner extends JCasAnnotator_ImplBase {
-
+	/**
+	 * process(Jcas aCas) does main work of the whole CPE, it uses abner as a gene name source,
+	 * manipulate the split sentences from the cas, retrive the gene name and store them.
+	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		// TODO Auto-generated method stub
