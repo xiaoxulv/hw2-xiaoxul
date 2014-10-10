@@ -15,13 +15,16 @@ public class annotator_Decider extends JCasAnnotator_ImplBase {
 	 * All the genetags got both lingpipe and abner will go through this one 
 	 * to make a decision about whether it will be showed in the last result, which means stored in the output
 	 * file.
-	 * The decider process is quite simple and straight forward: genetags from lingpipe with greater confidence 
-	 * than 0.1 will be directly given to cas while those who are not will be looked up and evaluated in the results 
-	 * got from abner.
 	 * 
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
+		/**
+		 * The decider's process function is quite simple and straight forward: genetags from lingpipe with greater 
+		 * confidence than 0.1 will be directly given to cas while those who are not will be looked up and evaluated
+		 * in the results got from abner.
+		 * 
+		 */
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
 		FSIterator it = jcas.getAnnotationIndex(genetag.type).iterator();

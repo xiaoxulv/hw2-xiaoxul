@@ -3,7 +3,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>edu.cmu.lti.11791.f14.hw2</groupId>
 	<artifactId>hw2-xiaoxul</artifactId>
-	<version>0.0.2-SNAPSHOT</version>
+	<version>0.0.6-SNAPSHOT</version>
 	<repositories>
 		<repository>
 			<id>oaqa</id>
@@ -88,5 +88,6 @@
 	<scm>
 		<connection>scm:git:git@github.com:xiaoxulv/hw2-xiaoxul.git</connection>
 		<developerConnection>scm:git:git@github.com:xiaoxulv/hw2-xiaoxul.git</developerConnection>
-	</scm>
+	  <tag>hw2-xiaoxul-0.0.3</tag>
+  </scm>
 </project>

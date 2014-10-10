@@ -24,16 +24,22 @@ import com.aliasi.util.AbstractExternalizable;
 
 
 public class geneannotator extends JCasAnnotator_ImplBase {
+	
+	/**
+	 * Annotator for genetag, using lingpipe, processing sentence.
+	 *
+	 */
+
 	//this const should be chosen really seriously
 	//N-gram annotation here
 	private static final int MAX_N_BEST_CHUNKS = 5;
 
-	/**
-	 * process(Jcas aCas) does main work of the whole CPE, it uses LINGPIPE as a gene name source,
-	 * manipulate the split sentences from the cas, retrive the gene name and store them.
-	 */
-  @Override
+
   public void process(JCas aCas) throws AnalysisEngineProcessException {
+	  /**
+		 * The process function uses lingpipe as a gene name source,manipulate the split sentences 
+		 * from the cas, retrive the gene name and store them.
+		 */
     // TODO Auto-generated method stub
     JCas jcas = aCas;
     //int count = 0;
@@ -163,8 +169,6 @@ public class geneannotator extends JCasAnnotator_ImplBase {
     }
     
     
-
-  
   private int countBlank(String s){
     int count = 0;
     for(int i = 0; i < s.length(); i++) {

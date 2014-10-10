@@ -8,11 +8,14 @@ import abner.Tagger;
 
 public class geneannotator_abner extends JCasAnnotator_ImplBase {
 	/**
-	 * process(Jcas aCas) does main work of the whole CPE, it uses abner as a gene name source,
-	 * manipulate the split sentences from the cas, retrive the gene name and store them.
+	 * Annotator for genetag, using abber, processing sentence.
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
+		/**
+		 * The process function uses abner as a gene name source,manipulate the split sentences 
+		 * from the cas, retrive the gene name and store them.
+		 */
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
 		FSIterator it = jcas.getAnnotationIndex(sentence.type).iterator();

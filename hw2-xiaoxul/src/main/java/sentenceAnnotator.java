@@ -5,11 +5,14 @@ import org.apache.uima.jcas.JCas;
 
 public class sentenceAnnotator extends JCasAnnotator_ImplBase {
 	/**
-	 * process(JCas aCas) get the input file content into CAS, split them by sentence
-	 * Also, get the ID and content seperately and then store them seperately
+	 * Sentence annotator, take input file and split them and store them in cas.
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
+		/**
+		 * Get the input file content into CAS, split them by sentence
+		 * Also, get the ID and content separately and then store them separately
+		 */
 		// TODO Auto-generated method stub
 		JCas jcas = aCas;
 		String text = jcas.getDocumentText().trim();
