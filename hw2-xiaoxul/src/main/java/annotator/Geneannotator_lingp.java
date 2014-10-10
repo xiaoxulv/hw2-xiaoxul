@@ -89,7 +89,7 @@ public class Geneannotator_lingp extends JCasAnnotator_ImplBase {
             double conf = Math.pow(2.0, c.score());
             //System.out.println(ft.format(conf));
             
-            if(conf > 0.1){//only leave those whose confidence make sense
+            if(conf > 0.05){//only leave those whose confidence make sense
             
             	gene = (sen.substring(c.start(), c.end()));
             	//System.out.println(c.start());

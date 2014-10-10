@@ -18,17 +18,18 @@ import MyTypeSystem.Genetag;
 public class Annotator_Decider extends JCasAnnotator_ImplBase {
 	/**
 	 * This annotator is the last one, which process the result from previous annotators using NER. 
-	 * All the Genetags got both lingpipe and abner will go through this one 
-	 * to make a decision about whether it will be showed in the last result, which means stored in the output
+	 * All the Genetags got both lingpipe and abner will go through this one o make a decision about 
+	 * whether it will be showed in the last result, which means stored in the output.
 	 * file.
 	 * 
 	 */
 	@Override
 	public void process(JCas aCas) throws AnalysisEngineProcessException {
 		/**
-		 * The decider's process function is quite simple and straight forward: Genetags from lingpipe with greater 
-		 * confidence than 0.1 will be directly given to cas while those who are not will be looked up and evaluated
-		 * in the results got from abner.
+		 * The decider's process function is quite simple and straight forward: Genetags from lingpipe 
+		 * with greater confidence than 0.2 will be directly given to cas while those who are not will 
+		 * be looked up and evaluated in the results got from abner. While Genetags from abner will be
+		 * directly given to cas.
 		 * 
 		 */
 		// TODO Auto-generated method stub
@@ -68,7 +69,7 @@ public class Annotator_Decider extends JCasAnnotator_ImplBase {
 		//will cause an exception
 		//try to ues new type system to store in cas
 		
-		double div = 0.3; 
+		double div = 0.2; 
 		Iterator lingpIt = lingps.entrySet().iterator();
 		while(lingpIt.hasNext()){
 			Map.Entry entry = (Map.Entry) lingpIt.next();
